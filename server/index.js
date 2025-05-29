@@ -19,7 +19,7 @@ app.set('trust proxy', true);
 
 app.use(express.json());
 app.use(cors({
-  origin: process.env.CLIENT_URL,
+  origin: "https://grid-dashboard-2-0.vercel.app",
   credentials: true
 }))
 app.use(cookieParser());
