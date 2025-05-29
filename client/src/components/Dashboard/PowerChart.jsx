@@ -9,7 +9,7 @@ const PowerChart = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/power-data");
+        const response = await axios.get("https://grid-dashboard-2-0-lj39.vercel.app/api/power-data");
         setChartData(response.data);
       } catch (error) {
         console.error("Failed to fetch chart data:", error);

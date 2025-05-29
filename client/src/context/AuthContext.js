@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
 
   const getCsrfToken = async () => {
     try {
-      const response = await axios.get("/api/csrf-token", { withCredentials: true });
+      const response = await axios.get("https://grid-dashboard-2-0-lj39.vercel.app/api/csrf-token", { withCredentials: true });
       axios.defaults.headers.common["X-CSRF-Token"] = response.data.csrfToken;
     } catch (error) {
       console.error("Failed to fetch CSRF token:", error);
@@ -49,7 +49,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post("/api/auth/login", { email, password });
+      const response = await axios.post("https://grid-dashboard-2-0-lj39.vercel.app/api/auth/login", { email, password });
       const { token, user } = response.data;
 
       Cookies.set("token", token, { expires: 7 });
