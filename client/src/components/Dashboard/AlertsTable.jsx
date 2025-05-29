@@ -23,7 +23,7 @@ const AlertsTable = ({ refreshTrigger, onAlertDeleted }) => {
   useEffect(() => {
     const fetchAlerts = async () => {
       try {
-        const response = await axios.get("https://grid-dashboard-2-0-lj39.vercel.app/api/alerts");
+        const response = await axios.get("https://grid-dashboard-2-0-1.onrender.com/api/alerts");
         setAlerts(response.data);
       } catch (error) {
         console.error("Failed to fetch alerts:", error);
@@ -39,7 +39,7 @@ const AlertsTable = ({ refreshTrigger, onAlertDeleted }) => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this alert?")) {
       try {
-        await axios.delete(`https://grid-dashboard-2-0-lj39.vercel.app/api/alerts/${id}`);
+        await axios.delete(`https://grid-dashboard-2-0-1.onrender.com/api/alerts/${id}`);
         toast.success("Alert deleted successfully!");
         onAlertDeleted();
       } catch (error) {

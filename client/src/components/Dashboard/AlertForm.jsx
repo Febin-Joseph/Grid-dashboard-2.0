@@ -21,7 +21,7 @@ const AlertSchema = Yup.object().shape({
 const AlertForm = ({ onAlertCreated }) => {
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
-      await axios.post("https://grid-dashboard-2-0-lj39.vercel.app/api/alerts", values)
+      await axios.post("https://grid-dashboard-2-0-1.onrender.com/api/alerts", values)
       toast.success("Alert created successfully!")
       resetForm()
       onAlertCreated()
