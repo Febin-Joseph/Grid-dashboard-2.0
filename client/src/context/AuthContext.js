@@ -21,21 +21,8 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const getCsrfToken = async () => {
-    try {
-      const response = await axios.get("https://grid-dashboard-2-0-1.onrender.com/api/csrf-token",
-        { withCredentials: true }
-      );
-      axios.defaults.headers.common["X-CSRF-Token"] = response.data.csrfToken;
-    } catch (error) {
-      console.error("Failed to fetch CSRF token:", error);
-    }
-  }
-
   useEffect(() => {
     const initializeAuth = async () => {
-      await getCsrfToken();
-
       const token = Cookies.get("token");
       const userData = Cookies.get("user");
 
@@ -49,7 +36,6 @@ export const AuthProvider = ({ children }) => {
 
     initializeAuth();
   }, []);
-
 
   const login = async (email, password) => {
     try {

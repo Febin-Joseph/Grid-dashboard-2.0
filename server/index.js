@@ -8,7 +8,7 @@ const authRoutes = require("./routes/auth");
 const alertRoutes = require("./routes/alerts");
 const powerDataRoutes = require("./routes/powerData");
 const { authLimiter, apiLimiter } = require('./middleware/rateLimit');
-const { securityMiddleware, csrfProtection } = require('./middleware/security');
+const { securityMiddleware } = require('./middleware/security');
 const Visit = require('./models/Visit');
 
 const app = express();
@@ -39,16 +39,6 @@ app.use(async (req, res, next) => {
 // Security
 app.use(securityMiddleware);
 
-// CSRF protection
-app.post('/api/*', csrfProtection);
-app.put('/api/*', csrfProtection);
-app.delete('/api/*', csrfProtection);
-
-// CSRF token
-app.get('/api/csrf-token', csrfProtection, (req, res) => {
-  res.json({ csrfToken: req.csrfToken() });
-});
-
 // MongoDB
 const connectDB = async () => {
   try {
@@ -71,18 +61,6 @@ app.use("/api/power-data", apiLimiter, powerDataRoutes);
 // Health check
 app.get("/api/health", (req, res) => {
   res.json({ message: "Server is running!" });
-})
-
-// CSRF Error handling
-app.use((err, req, res, next) => {
-  if (err.code === 'EBADCSRFTOKEN') {
-    res.status(403).json({
-      status: 'error',
-      message: 'Invalid CSRF token'
-    });
-  } else {
-    next(err);
-  }
 })
 
 // Global error handler
