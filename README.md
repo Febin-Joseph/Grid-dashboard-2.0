@@ -33,14 +33,14 @@ A comprehensive dashboard application built with React, Node.js, Express, and Mo
 
 ### Environment Setup
 
-Create a \`.env\` file in the \`server\` directory:
+Create a `.env` file in the `server` directory:
 
-\`\`\`env
+```env
 PORT=5000
 MONGODB_URI=mongodb://localhost:27017/gridmanager
 JWT_SECRET=your-super-secret-jwt-key-here
 NODE_ENV=development
-\`\`\`
+```
 
 ### Create Initial User (Optional)
 
@@ -48,20 +48,20 @@ You can register a user via API or use the demo credentials:
 - Email: admin@example.com
 - Password: password123
 
-To create this user, make a POST request to \`http://localhost:5000/api/auth/register`:
+To create this user, make a POST request to [http://localhost:5000/api/auth/register](http://localhost:5000/api/auth/register)
 
-\`\`\`json
+```
 {
   "name": "Admin User",
   "email": "admin@example.com",
   "password": "password123",
   "userId": "Abc-24"
 }
-\`\`\`
+```
 
 ## Project Structure
 
-\`\`\`
+```
 grid-manager-fullstack/
 ├── client/                 # React frontend
 │   ├── public/
@@ -78,7 +78,7 @@ grid-manager-fullstack/
 │   ├── .env.example
 │   └── package.json
 └── README.md
-\`\`\`
+```
 
 ## Demo Credentials
 
